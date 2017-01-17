@@ -24,9 +24,9 @@
 # called "data.sqlite" in the current working directory which has at least a table
 # called "data".
 
-require 'scraperwiki'
-require 'mechanize'
-require 'hpricot'
+# require 'scraperwiki'
+# require 'mechanize'
+# require 'hpricot'
 
 # Process the cpso document and parse it
 # into various components. 
