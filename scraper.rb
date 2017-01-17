@@ -24,6 +24,8 @@
 # called "data.sqlite" in the current working directory which has at least a table
 # called "data".
 
+puts "Testing output"
+
 require 'scraperwiki'
 require 'mechanize'
 require 'hpricot'
