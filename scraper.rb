@@ -25,12 +25,14 @@
 # called "data".
 
 require 'scraperwiki'
-
-require 'bundler/setup'
-
 require 'mechanize'
 require 'hpricot'
 
+# Process the cpso document and parse it
+# into various components. 
+# Limited currently to:
+# Phone, Fax, City, Address, First Name, Last Name, Active/inactive, Family Doctor (Yes/No)
+# Assumes the province is Ontario.
 class CPSONameDocument
 
   attr_accessor :cpso,  :specialty
