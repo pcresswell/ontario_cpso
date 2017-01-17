@@ -12,6 +12,7 @@ GEM
   specs:
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
+    hpricot (0.8.6)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
     httpclient (2.6.0.1)
@@ -43,6 +44,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  hpricot (~> 0.8.6)
   mechanize
   scraperwiki!
 
