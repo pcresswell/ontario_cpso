@@ -24,8 +24,6 @@
 # called "data.sqlite" in the current working directory which has at least a table
 # called "data".
 
-puts "Testing output"
-
 require 'scraperwiki'
 require 'mechanize'
 require 'hpricot'
@@ -166,10 +164,10 @@ class CPSONameDocument
   end
 
   def postal_code
-    puts @address
+    
     postal_code = /[A-Z][0-9][A-Z](\s)[0-9][A-Z][0-9]/.match(@address.to_s)
     @postal_code =  postal_code.to_s
-    puts "Postal Code Found: #{@postal_code}"
+    
     clean(@postal_code)
   end
 
@@ -202,9 +200,7 @@ class CPSONameDocument
   end
 
   def raw_output
-    @address_lines.each { |line|
-      puts line.to_s
-    }
+    
   end
 end
 
@@ -223,7 +219,7 @@ end
     extractor.process
 
       ScraperWiki.save_sqlite(
-        [:doctor] ,
+        [:cpso] ,
         {
           cpso: extractor.cpso,
           last_name: extractor.last_name,
