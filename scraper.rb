@@ -205,38 +205,39 @@ class CPSONameDocument
 end
 
 (100000..110000).step(1).each do |cpso_number|
-  agent = Mechanize.new
+    puts "Hello #{cpso_number}"
+#   agent = Mechanize.new
 
-  begin
-    page = agent.get("http://www.cpso.on.ca/docsearch/details.aspx?view=1&id=#{cpso_number}")
-    @response = page.content
+#   begin
+#     page = agent.get("http://www.cpso.on.ca/docsearch/details.aspx?view=1&id=#{cpso_number}")
+#     @response = page.content
 
-    doc = Hpricot(@response)
+#     doc = Hpricot(@response)
     
-    extractor = CPSONameDocument.new
-    extractor.cpso = cpso_number
-    extractor.page = doc
-    extractor.process
+#     extractor = CPSONameDocument.new
+#     extractor.cpso = cpso_number
+#     extractor.page = doc
+#     extractor.process
 
-      ScraperWiki.save_sqlite(
-        [:cpso] ,
-        {
-          cpso: extractor.cpso,
-          last_name: extractor.last_name,
-          first_name: extractor.first_name,
-          phone: extractor.phone,
-          fax: extractor.fax,
-          specialty: extractor.specialty,
-          address_line_1: extractor.address_line_1,
-          city: extractor.city,
-          postal_code: extractor.postal_code,
-          is_active: extractor.is_active?
-        }
-      )
-  rescue => e
-    puts "Exception thrown during the processing of the document #{e}"
-    puts "Skipping #{cpso_number}"
-  end
+#       ScraperWiki.save_sqlite(
+#         [:cpso] ,
+#         {
+#           cpso: extractor.cpso,
+#           last_name: extractor.last_name,
+#           first_name: extractor.first_name,
+#           phone: extractor.phone,
+#           fax: extractor.fax,
+#           specialty: extractor.specialty,
+#           address_line_1: extractor.address_line_1,
+#           city: extractor.city,
+#           postal_code: extractor.postal_code,
+#           is_active: extractor.is_active?
+#         }
+#       )
+#   rescue => e
+#     puts "Exception thrown during the processing of the document #{e}"
+#     puts "Skipping #{cpso_number}"
+#   end
 end
 
 
