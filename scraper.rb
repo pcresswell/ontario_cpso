@@ -204,8 +204,8 @@ class CPSONameDocument
   end
 end
 
-(100000..100010).step(1).each do |cpso_number|
-    puts "Hello #{cpso_number}"
+(100000..200000).step(1).each do |cpso_number|
+  puts "Processing CPSO number: #{cpso_number}"
   agent = Mechanize.new
 
   begin
