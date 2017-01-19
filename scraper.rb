@@ -99,6 +99,15 @@ class CPSONameDocument
       return "inactive"
     end
   end
+  
+  def gender
+    g = @page.search("//*[@id='profile-content']")
+    if (g.to_s.include?("Female"))
+      return "Female"
+    else
+      return "Male"
+    end
+  end
 
   def process_address
     @address = @page.search("//*[@id='profile-content']/div[2]/p")
@@ -205,7 +214,6 @@ class CPSONameDocument
 end
 
 (100000..200000).step(1).each do |cpso_number|
-  puts "Processing CPSO number: #{cpso_number}"
   agent = Mechanize.new
 
   begin
@@ -231,7 +239,8 @@ end
           address_line_1: extractor.address_line_1,
           city: extractor.city,
           postal_code: extractor.postal_code,
-          is_active: extractor.is_active?
+          is_active: extractor.is_active?,
+          gender: extractor.gender
         }
       )
   rescue => e
